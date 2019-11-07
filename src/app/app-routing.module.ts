@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'lista-mantenimientos',
     pathMatch: 'full'
   },
   {
@@ -14,7 +14,10 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
+  },
+  { path: 'lista-mantenimientos', loadChildren: './lista-mantenimientos/lista-mantenimientos.module#ListaMantenimientosPageModule' },
+  { path: 'mantenimiento-detalle', loadChildren: './mantenimiento-detalle/mantenimiento-detalle.module#MantenimientoDetallePageModule' },
+  { path: 'crear-mantenimiento', loadChildren: './crear-mantenimiento/crear-mantenimiento.module#CrearMantenimientoPageModule' }
 ];
 
 @NgModule({

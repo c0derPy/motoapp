@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="!esEditable">Nuevo mantenimiento</ion-title>
+    <ion-title *ngIf="esEditable">Editar mantenimiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-list>
+		<ion-item>
+			<ion-label position="floating">Kilometraje</ion-label>
+			<ion-input [(ngModel)]="mantenimiento.kilometraje" type="number"></ion-input>
+		</ion-item>
+		<ion-item>
+            <ion-label position="floating">Observaciones</ion-label>
+            <ion-textarea [(ngModel)]="mantenimiento.observaciones"></ion-textarea>
+        </ion-item>
+        <ion-item>
+		    <ion-label>Repuestos</ion-label>
+		    <ion-select [(ngModel)]="mantenimiento.repuestos" multiple="true" cancelText="Cancelar" okText="Listo!" [compareWith]="compareFn">
+		      <ion-select-option *ngFor="let repuesto of repuestos" [value]="repuesto">{{repuesto.nombre}}</ion-select-option>
+		    </ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Costo $</ion-label>
+			<ion-input [(ngModel)]="mantenimiento.valor_mano_obra" type="number"></ion-input>
+		</ion-item>
+		<ion-button expand="block" *ngIf="!esEditable" (click)="registrarMantenimiento()">Guardar</ion-button>
+		<ion-button expand="block" *ngIf="esEditable" (click)="editarMantenimiento()">Editar</ion-button>
+	</ion-list>
+
+</ion-content>

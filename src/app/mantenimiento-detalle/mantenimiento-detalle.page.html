@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>km: {{mantenimiento.kilometraje}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-card>
+  		<ion-card-header>
+   		 	<b>Fecha:</b> {{mantenimiento.fecha | date}}
+  		</ion-card-header>
+ 	</ion-card>
+
+ 	<ion-card>
+  		<ion-card-header>
+   		 	<b>Observaciones:</b>
+  		</ion-card-header>
+  		<ion-card-content>
+	    	{{mantenimiento.observaciones}}
+	 	</ion-card-content>
+ 	</ion-card>
+
+ 	<ion-card>
+ 		<ion-card-header>
+ 			<b>Repuestos:</b>
+ 		</ion-card-header>
+
+ 		<ion-card-content>
+ 			<ion-list>
+			    <ion-item *ngFor="let repuesto of mantenimiento.repuestos">
+			     {{repuesto.nombre}}
+		    	</ion-item>
+			</ion-list>
+ 		</ion-card-content>
+
+ 	</ion-card>
+ 	<ion-card>
+  		<ion-card-header>
+   		 	<b>Costo:</b> 
+  		</ion-card-header>
+  	
+	  	<ion-card-content>
+	    	${{ mantenimiento.valor_mano_obra }}
+	 	</ion-card-content>
+ 	</ion-card>
+
+
+ 	<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="danger" (click)="editarMantenimiento(mantenimiento)">
+          <ion-icon name="create"></ion-icon>
+        </ion-fab-button>
+  </ion-fab>
+</ion-content>
